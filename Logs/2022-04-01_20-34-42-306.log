@@ -1,0 +1,14 @@
+﻿LOG 2022/04/01
+Save Path: C:\Users\Admin\PycharmProjects\edu_video\Logs
+Task Start: 2022/04/01 20:34:42
+Task CommandLine: edu_video.exe  https://d006.eduyun.cn/videoworks/mda-kicmyg9yk3ughfpi/ykt_tbkt_hls_1080_7/video/一年级【语文（统编版）】金木水火土.m3u8
+
+20:34:42.309 / (NORMAL) 开始解析 https://d006.eduyun.cn/videoworks/mda-kicmyg9yk3ughfpi/ykt_tbkt_hls_1080_7/video/一年级【语文（统编版）】金木水火土.m3u8
+20:34:42.882 / (NORMAL) 写出meta.json
+20:34:43.001 / (NORMAL) 开始下载文件
+20:34:43.163 / (NORMAL) 读取文件信息...
+20:34:43.354 / (NORMAL) PID 0x100: Video h264, yuv420p(tv, bt709, progressive), 1920x1080 [SAR 1:1 DAR 16:9], 30 fps, 30 tbr, 90k tbn, 60 tbc
+20:34:43.355 / (NORMAL) PID 0x101: Audio aac, 44100 Hz, stereo, fltp, 166 kb/s
+20:34:44.763 / (NORMAL) 强制退出: 强制
+
+Task End: 2022/04/01 20:34:44
