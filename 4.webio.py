@@ -18,9 +18,7 @@ def main():
                 content = json.load(f)
                 return content['xueDuan']
 
-
         json_file = get_json()
-
 
         def get_grade(_json_file):
             _grade_list = []
@@ -31,7 +29,6 @@ def main():
                     _grade_list.append([j["njName"], num])
                 num += 1
             return _grade_list
-
 
         def get_xue_ke_id(jie_duan, grade_num):
             subject_list = []
@@ -46,7 +43,6 @@ def main():
                 num += 1
             return subject_list
 
-
         def get_all_vid(jie_duan, grade, subject):
             all_vid = []
             json_content = json_file[jie_duan]["nianJiList"][grade]["subjectsList"][subject]
@@ -54,7 +50,6 @@ def main():
                 for j in i["caseList"]:
                     all_vid.append(j["caseCode"])
             return all_vid
-
 
         grade_list = get_grade(json_file)
         # print(grade_list)
@@ -107,5 +102,8 @@ def main():
 
 
 if __name__ == '__main__':
-    pywebio.platform.tornado_http.start_server(main, port=3985, host='', debug=False, cdn=True, static_dir=None, allowed_origins=None, check_origin=None, auto_open_webbrowser=False, session_expire_seconds=None, session_cleanup_interval=None, max_payload_size='200M')
+    pywebio.platform.tornado_http.start_server(main, port=3985, host='', debug=False, cdn=True, static_dir=None,
+                                               allowed_origins=None, check_origin=None, auto_open_webbrowser=False,
+                                               session_expire_seconds=None, session_cleanup_interval=None,
+                                               max_payload_size='200M')
     # start_server(main, debug=True, port=3985, cdn="https://s-bj-2220-tuo-admin.oss.dogecdn.com/")
