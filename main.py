@@ -5,7 +5,7 @@ start_server = "python 1.servers.py"
 start_url_2_m3u8 = "python 2.url_2_m3u8.py"
 start_m3u8_down = "python 3.m3u8_down.py"
 start_webio = "python 4.webio.py"
-start_reids = ".\\redis-server.exe"
+start_reids = ".\\redis-server.exe redis.windows.conf"
 
 
 if __name__ == '__main__':
