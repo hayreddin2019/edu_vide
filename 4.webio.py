@@ -98,7 +98,7 @@ def main():
 
         for i in all_vid:
             r.lpush("queue", i)
-            output.put_markdown(f"已经推送{i}至下载队列，请稍后查看或者刷新页面重新添加")
+            output.put_markdown(f"已经推送{i}至下载队列，请在命令行窗口下载队列中查看，没下载完之前多次添加 `下载路径` 会被覆盖")
         print("推送完成")
         output.toast("添加完成，请注意不要重复添加，否则会导致重复下载", color="error")
         # 选择要下载的年级
