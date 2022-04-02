@@ -78,7 +78,7 @@ def main():
                 temp += 1
             grade_temp_list.append(str(i[1]) + '-' + str(temp2) + '-' + i[0])
 
-        work_dir = input.input("请输入要保存的目录[相对路径]：", value="/Downloads")
+        work_dir = input.input("请输入要保存的目录[相对路径]（会覆盖还没有运行的任务!）：", value="/Downloads")
         r.set("work_dir", work_dir)
         work_dir = os.getcwd() + r.get('work_dir').decode('utf-8').replace('/', '\\')
         output.toast(f"添加工作目录为{work_dir}", color="success")
