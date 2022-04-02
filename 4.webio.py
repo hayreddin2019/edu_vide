@@ -77,6 +77,8 @@ def main():
                 temp += 1
             grade_temp_list.append(str(i[1]) + '-' + str(temp2) + '-' + i[0])
 
+        work_dir = input.input("请输入要保存的目录：", value="./Downloads")
+        r.set("work_dir", work_dir)
         gread_str = input.select("请选择年级", grade_temp_list)
 
         jieduan_num = int(gread_str.split('-')[0])
