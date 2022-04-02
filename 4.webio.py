@@ -4,6 +4,7 @@ from pywebio import input, output
 from pywebio import config
 import json
 import redis
+import os
 
 r = redis.Redis(host='localhost', port=6379)
 
@@ -77,10 +78,11 @@ def main():
                 temp += 1
             grade_temp_list.append(str(i[1]) + '-' + str(temp2) + '-' + i[0])
 
-        work_dir = input.input("请输入要保存的目录：", value="./Downloads")
+        work_dir = input.input("请输入要保存的目录[相对路径]：", value="/Downloads")
         r.set("work_dir", work_dir)
+        work_dir = os.getcwd() + r.get('work_dir').decode('utf-8').replace('/', '\\')
+        output.toast(f"添加工作目录为{work_dir}", color="success")
         gread_str = input.select("请选择年级", grade_temp_list)
-
         jieduan_num = int(gread_str.split('-')[0])
         grade_num = int(gread_str.split('-')[1]) - 1
 
