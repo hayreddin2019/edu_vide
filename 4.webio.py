@@ -80,7 +80,7 @@ def main():
         gread_str = input.select("请选择年级", grade_temp_list)
 
         jieduan_num = int(gread_str.split('-')[0])
-        grade_num = int(gread_str.split('-')[1])
+        grade_num = int(gread_str.split('-')[1]) - 1
 
         xue_ke = get_xue_ke_id(jieduan_num, grade_num)
 
