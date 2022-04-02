@@ -18,7 +18,7 @@ def get_content(_url):
 
 
 def content_re_m3u8(_content):
-    m3u8_content = re.findall('file: "(.*?)",', _content)[0]
+    m3u8_content = re.findall('file: "([^"]+)"', _content)[0]
     return m3u8_content
 
 
