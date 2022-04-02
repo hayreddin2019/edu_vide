@@ -2,6 +2,7 @@
 
 import re
 import requests
+import time
 
 
 def get_content(_url):
@@ -24,6 +25,7 @@ def content_re_m3u8(_content):
 def url_to_m3u8(_url):
     _url = "https://tongbu.eduyun.cn/tbkt/tbkthtml/wk/weike/" + _url[:6] + "/" + _url + ".html"
     content = get_content(_url)
+    time.sleep(2)
     m3u8_content = content_re_m3u8(content)
     return m3u8_content
 
