@@ -14,7 +14,7 @@
 1. 安装 `python 3` 
    若没有，请点击本目录下的 `python-3.9.12-amd64.exe` 进行安装 或者去官网安装 (https://www.python.org/)
 
-2. 安装完成后，在命令行执行 `pip -r requirements.txt` 来安装依赖
+2. 安装完成后，在命令行执行 `pip install -r requirements.txt` 来安装依赖
 
 3. 全部安装完成后运行命令 `python main.py` 来启动程序
 
