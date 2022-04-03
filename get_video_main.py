@@ -28,4 +28,3 @@ def url_to_m3u8(_url):
     time.sleep(2)
     m3u8_content = content_re_m3u8(content)
     return m3u8_content
-

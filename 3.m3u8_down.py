@@ -1,5 +1,4 @@
 # coding: utf-8
-import string
 import redis
 import os
 from urllib.parse import quote
@@ -16,4 +15,3 @@ while True:
     print("正在下载 m3u8 文件", url)
     os.system("edu_video.exe" + " " + url + " " + "--headers" + " " + "referer:https://tongbu.eduyun.cn/" + " " + "--workDir" + " " + work_dir)
     print("该文件下载完成！")
-

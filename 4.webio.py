@@ -24,33 +24,33 @@ def main():
         def get_grade(_json_file):
             _grade_list = []
             num = 0
-            for i in _json_file:
-                jie_duan = i["nianJiList"]
+            for _i in _json_file:
+                jie_duan = _i["nianJiList"]
                 for j in jie_duan:
                     _grade_list.append([j["njName"], num])
                 num += 1
             return _grade_list
 
-        def get_xue_ke_id(jie_duan, grade_num):
+        def get_xue_ke_id(jie_duan, _grade_num):
             subject_list = []
             num = 0
-            for i in json_file:
+            for _i in json_file:
                 if num != jie_duan:
                     num += 1
                     continue
-                xue_ke = i["nianJiList"][grade_num]
-                for i in xue_ke["subjectsList"]:
-                    subject_list.append(i["xkName"])
+                _xue_ke = _i["nianJiList"][_grade_num]
+                for j in _xue_ke["subjectsList"]:
+                    subject_list.append(j["xkName"])
                 num += 1
             return subject_list
 
         def get_all_vid(jie_duan, grade, subject):
-            all_vid = []
+            _all_vid = []
             json_content = json_file[jie_duan]["nianJiList"][grade]["subjectsList"][subject]
-            for i in json_content["danYuanList"]:
-                for j in i["caseList"]:
-                    all_vid.append(j["caseCode"])
-            return all_vid
+            for _i in json_content["danYuanList"]:
+                for j in _i["caseList"]:
+                    _all_vid.append(j["caseCode"])
+            return _all_vid
 
         grade_list = get_grade(json_file)
         # print(grade_list)
@@ -82,11 +82,11 @@ def main():
         r.set("work_dir", work_dir)
         work_dir = os.getcwd() + r.get('work_dir').decode('utf-8').replace('/', '\\')
         output.toast(f"添加工作目录为{work_dir}", color="success")
-        gread_str = input.select("请选择年级", grade_temp_list)
-        jieduan_num = int(gread_str.split('-')[0])
-        grade_num = int(gread_str.split('-')[1]) - 1
+        grade_str = input.select("请选择年级", grade_temp_list)
+        jie_duan_num = int(grade_str.split('-')[0])
+        grade_num = int(grade_str.split('-')[1]) - 1
 
-        xue_ke = get_xue_ke_id(jieduan_num, grade_num)
+        xue_ke = get_xue_ke_id(jie_duan_num, grade_num)
 
         xue_ke_str = input.select("请选择学科", xue_ke)
 
@@ -94,7 +94,7 @@ def main():
             if xue_ke_str == i:
                 xue_ke_num = xue_ke.index(i)
 
-        all_vid = get_all_vid(jieduan_num, grade_num, xue_ke_num)
+        all_vid = get_all_vid(jie_duan_num, grade_num, xue_ke_num)
 
         for i in all_vid:
             r.lpush("queue", i)
@@ -107,6 +107,5 @@ def main():
 if __name__ == '__main__':
     pywebio.platform.tornado_http.start_server(main, port=3985, host='', debug=False, cdn=True, static_dir=None,
                                                allowed_origins=None, check_origin=None, auto_open_webbrowser=False,
-                                               session_expire_seconds=None, session_cleanup_interval=None,
                                                max_payload_size='200M')
     # start_server(main, debug=True, port=3985, cdn="https://s-bj-2220-tuo-admin.oss.dogecdn.com/")
