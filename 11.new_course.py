@@ -21,4 +21,4 @@ while True:
         child_nodes = i['child_nodes']
         for j in child_nodes:
             print("成功推送:", j['node_name'], ":", j['node_id'])
-            r.lpush("m3u8_dan_yuan_id", j['node_id'] + "@" + work_dir)
+            r.rpush("m3u8_dan_yuan_id", j['node_id'] + "@" + work_dir)

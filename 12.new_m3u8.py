@@ -19,9 +19,10 @@ while True:
     data = res.json()
     url_father = data[0]['video_extend']
     urls = url_father['urls'][2]['urls']
+    video_name = url_father['title']
     higher_url_01 = urls[0]
     higher_url_02 = urls[1]
-    full_url = higher_url_01 + "|" + higher_url_02
+    full_url = video_name + "$" + higher_url_01 + "|" + higher_url_02
     print("转换成功:", dan_yuan_id)
-    r.lpush("m3u8_down_link", full_url + "@" + work_dir)
+    r.rpush("m3u8_down_link", full_url + "@" + work_dir)
     print("已添加到队列:", full_url + "@" + work_dir)
