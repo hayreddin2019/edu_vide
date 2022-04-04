@@ -28,7 +28,7 @@ def new_version(work_dir):
     vid_code = input.input("请输入视频编号：")
     active_id, book_name = get_book_info(vid_code)
     if active_id:
-        output.toast("获取成功！", color="success")
+        output.toast("获取成功，请至命令行查看！", color="success")
         active_id = active_id + "@" + work_dir
         r2.rpush("active_id", active_id)
         output.put_markdown(f"已经推送 `{book_name}` 至下载队列，请在命令行窗口下载队列中查看")
@@ -134,11 +134,11 @@ def main():
             i = i + "@" + work_dir
             r.lpush("queue", i)
             output.put_markdown(f"已经推送{i}至下载队列，请在命令行窗口下载队列中查看")
-        print("推送完成，请至命令行查看！")
+        print("推送完成")
         output.toast("添加完成，请注意不要重复添加，否则会导致重复下载", color="error")
         # 选择要下载的年级
 
 
 if __name__ == '__main__':
-    pywebio.start_server(main, port=3985, host='', debug=False, cdn="https://s-bj-2220-tuo-admin.oss.dogecdn.com/")
+    pywebio.start_server(main, port=3986, host='', debug=False, cdn="https://s-bj-2220-tuo-admin.oss.dogecdn.com/", auto_open_webbrowser=True)
     # start_server(main, debug=True, port=3985, cdn="https://s-bj-2220-tuo-admin.oss.dogecdn.com/")
