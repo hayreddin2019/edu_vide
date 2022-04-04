@@ -140,5 +140,5 @@ def main():
 
 
 if __name__ == '__main__':
-    pywebio.start_server(main, port=3986, host='', debug=False, cdn="https://s-bj-2220-tuo-admin.oss.dogecdn.com/", auto_open_webbrowser=True)
+    pywebio.start_server(main, port=3985, host='', debug=False, cdn="https://s-bj-2220-tuo-admin.oss.dogecdn.com/", auto_open_webbrowser=True)
     # start_server(main, debug=True, port=3985, cdn="https://s-bj-2220-tuo-admin.oss.dogecdn.com/")
