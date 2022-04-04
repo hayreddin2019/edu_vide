@@ -77,11 +77,9 @@ def main():
                 temp2 = 0
                 temp += 1
             grade_temp_list.append(str(i[1]) + '-' + str(temp2) + '-' + i[0])
-
-        work_dir = input.input("请输入要保存的目录[相对路径]（会覆盖还没有运行的任务!）：", value="/Downloads")
-        r.set("work_dir", work_dir)
-        work_dir = os.getcwd() + r.get('work_dir').decode('utf-8').replace('/', '\\')
-        output.toast(f"添加工作目录为{work_dir}", color="success")
+        down_dir_value = os.getcwd() + '\download'
+        work_dir = input.input("请输入要保存的目录[绝对路径]（只对本次任务有效）：", value=down_dir_value)
+        output.toast(f"添加工作目录为{work_dir}(只对本次任务有效)", color="success")
         grade_str = input.select("请选择年级", grade_temp_list)
         jie_duan_num = int(grade_str.split('-')[0])
         grade_num = int(grade_str.split('-')[1]) - 1
@@ -97,8 +95,9 @@ def main():
         all_vid = get_all_vid(jie_duan_num, grade_num, xue_ke_num)
 
         for i in all_vid:
+            i = i + "@" + work_dir
             r.lpush("queue", i)
-            output.put_markdown(f"已经推送{i}至下载队列，请在命令行窗口下载队列中查看，没下载完之前多次添加 `下载路径` 会被覆盖")
+            output.put_markdown(f"已经推送{i}至下载队列，请在命令行窗口下载队列中查看")
         print("推送完成")
         output.toast("添加完成，请注意不要重复添加，否则会导致重复下载", color="error")
         # 选择要下载的年级
