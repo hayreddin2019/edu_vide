@@ -20,5 +20,12 @@ while True:
         print("正在转换:", i['node_name'])
         child_nodes = i['child_nodes']
         for j in child_nodes:
-            print("成功推送:", j['node_name'], ":", j['node_id'])
-            r.rpush("m3u8_dan_yuan_id", j['node_id'] + "@" + work_dir)
+            if j['child_nodes']:
+                print("检测到子节点有数据")
+                for k in j['child_nodes']:
+                    print("成功推送:", k['node_name'], ":", j['node_id'])
+                    r.rpush("m3u8_dan_yuan_id", k['node_id'] + "@" + work_dir)
+            else:
+                print("检测到没有子节点")
+                print("成功推送:", j['node_name'], ":", j['node_id'])
+                r.rpush("m3u8_dan_yuan_id", j['node_id'] + "@" + work_dir)

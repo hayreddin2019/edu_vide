@@ -15,6 +15,7 @@ while True:
     print("正在尝试转换:", dan_yuan_id)
     work_url = f"https://s-file.ykt.cbern.com.cn/x_course_s_g/s_course/v1/x_class_hour_activity/{dan_yuan_id}/resources.json"
     time.sleep(2)
+    print("正在获取资源列表:", work_url)
     res = requests.get(work_url, headers=header)
     data = res.json()
     url_father = data[0]['video_extend']
