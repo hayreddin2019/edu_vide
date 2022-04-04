@@ -128,7 +128,7 @@ def main():
 
 
 if __name__ == '__main__':
-    pywebio.platform.tornado_http.start_server(main, port=3985, host='', debug=False, cdn=True, static_dir=None,
+    pywebio.platform.tornado_http.start_server(main, port=3986, host='', debug=False, cdn=True, static_dir=None,
                                                allowed_origins=None, check_origin=None, auto_open_webbrowser=False,
                                                max_payload_size='200M')
     # start_server(main, debug=True, port=3985, cdn="https://s-bj-2220-tuo-admin.oss.dogecdn.com/")

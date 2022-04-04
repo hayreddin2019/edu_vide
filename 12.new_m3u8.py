@@ -18,9 +18,10 @@ while True:
     res = requests.get(work_url, headers=header)
     data = res.json()
     url_father = data[0]['video_extend']
-    urls = url_father['urls'][3]['urls']
+    urls = url_father['urls'][2]['urls']
     higher_url_01 = urls[0]
     higher_url_02 = urls[1]
     full_url = higher_url_01 + "|" + higher_url_02
     print("转换成功:", dan_yuan_id)
     r.lpush("m3u8_down_link", full_url + "@" + work_dir)
+    print("已添加到队列:", full_url + "@" + work_dir)
