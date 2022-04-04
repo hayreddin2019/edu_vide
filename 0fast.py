@@ -14,7 +14,7 @@ def main(url: str = None):
         return {"message": "Please enter a URL"}
     if r.get(url):
         return {"message": "URL already exists"}
-    r.lpush("queue", url)
+    r.rpush("queue", url)
     _list = url.split(",")
     return {"url": _list}
 

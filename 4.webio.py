@@ -17,9 +17,10 @@ def new_version(work_dir):
     active_id, book_name = get_book_info(vid_code)
     if active_id:
         output.toast("获取成功！", color="success")
-        active_id = active_id + "@" + vid_code
+        active_id = active_id + "@" + work_dir
         r2.lpush("active_id", active_id)
         output.put_markdown(f"已经推送 `{book_name}` 至下载队列，请在命令行窗口下载队列中查看")
+        output.put_markdown(f"推送{active_id}成功")
     else:
         output.toast("获取失败，请检查并重新输入。", color="danger")
         new_version(work_dir)
