@@ -2,11 +2,27 @@
 import pywebio
 from pywebio import input, output
 from pywebio import config
+from new_book import get_book_info
 import json
 import redis
 import os
 
 r = redis.Redis(host='localhost', port=6379)
+r2 = redis.Redis(host='localhost', port=6379, db=1)
+
+
+def new_version(work_dir):
+    output.put_markdown(r"""新版说明如下""" + '\n' + '\n')
+    vid_code = input.input("请输入视频编号：")
+    active_id, book_name = get_book_info(vid_code)
+    if active_id:
+        output.toast("获取成功！", color="success")
+        active_id = active_id + "@" + vid_code
+        r2.lpush("active_id", active_id)
+        output.put_markdown(f"已经推送 `{book_name}` 至下载队列，请在命令行窗口下载队列中查看")
+    else:
+        output.toast("获取失败，请检查并重新输入。", color="danger")
+        new_version(work_dir)
 
 
 @config(theme="yeti")
@@ -80,6 +96,13 @@ def main():
         down_dir_value = os.getcwd() + '\download'
         work_dir = input.input("请输入要保存的目录[绝对路径]（只对本次任务有效）：", value=down_dir_value)
         output.toast(f"添加工作目录为{work_dir}(只对本次任务有效)", color="success")
+        version_list = ["旧版: https://ykt.eduyun.cn/ykt/index.html", "新版: https://www.zxx.edu.cn/syncClassroom"]
+        version_chose = input.select("请选择版本：", version_list)
+        if version_chose == "新版: https://www.zxx.edu.cn/syncClassroom":
+            new_version(work_dir)
+            continue
+        else:
+            pass
         grade_str = input.select("请选择年级", grade_temp_list)
         jie_duan_num = int(grade_str.split('-')[0])
         grade_num = int(grade_str.split('-')[1]) - 1
