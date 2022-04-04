@@ -16,5 +16,5 @@ while True:
     url = quote(url, safe="/:?=&%20")
     print("转码后的m3u8地址: ", url)
     print("正在下载 m3u8 文件", url)
-    os.system("edu_video.exe" + " " + url + " " + "--headers" + " " + "referer:https://tongbu.eduyun.cn/" + " " + "--workDir" + " " + work_dir + " " + "--saveName" + " " + url_name)
+    os.system("edu_video.exe" + " " + url + " " + "--headers" + " " + "referer:https://www.zxx.edu.cn/" + " " + "--workDir" + " " + work_dir + " " + "--saveName" + " " + url_name)
     print("该文件下载完成！")
