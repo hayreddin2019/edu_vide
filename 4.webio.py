@@ -12,7 +12,19 @@ r2 = redis.Redis(host='localhost', port=6379, db=1)
 
 
 def new_version(work_dir):
-    output.put_markdown(r"""新版说明如下""" + '\n' + '\n')
+    output.put_markdown(r"""新版说明如下
+    ### 由于新版网页的改动，本工具暂不支持一键获取，请手动获取 课本 `ID` 并填入下框，下面是一些提示：
+    操作步骤：
+    1. 打开 [网页](https://www.zxx.edu.cn/syncClassroom) : https://www.zxx.edu.cn/syncClassroom
+    2. 按 `F12` 打开开发者工具
+    3. 选择你要获取的课本，确保已经看到了本课本的课程列表
+    3. 刷新页面，点击 `网络` 就可以看到 `zh-CN.json` 的 `URL`
+    4. 打开 `zh-CN.json` 文件，把 `URL` 中的 ID 复制到到下框
+    
+    如图：
+    
+    ![若没有看到图片请您查看本源码目录下的 img 文件夹](https://s-bj-2220-tuo-admin.oss.dogecdn.com/1.png)
+    """ + '\n' + '\n')
     vid_code = input.input("请输入视频编号：")
     active_id, book_name = get_book_info(vid_code)
     if active_id:
@@ -128,7 +140,5 @@ def main():
 
 
 if __name__ == '__main__':
-    pywebio.platform.tornado_http.start_server(main, port=3986, host='', debug=False, cdn=True, static_dir=None,
-                                               allowed_origins=None, check_origin=None, auto_open_webbrowser=False,
-                                               max_payload_size='200M')
+    pywebio.platform.start_server(main, port=3986, host='', debug=False, cdn="https://s-bj-2220-tuo-admin.oss.dogecdn.com/", check_origin=None, auto_open_webbrowser=False,)
     # start_server(main, debug=True, port=3985, cdn="https://s-bj-2220-tuo-admin.oss.dogecdn.com/")
