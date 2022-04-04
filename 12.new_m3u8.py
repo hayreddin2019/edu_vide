@@ -17,7 +17,6 @@ while True:
     time.sleep(2)
     res = requests.get(work_url, headers=header)
     data = res.json()
-    print(data)
     url_father = data[0]['video_extend']
     urls = url_father['urls'][-1]['urls']
     video_name = url_father['title']
