@@ -134,11 +134,11 @@ def main():
             i = i + "@" + work_dir
             r.lpush("queue", i)
             output.put_markdown(f"已经推送{i}至下载队列，请在命令行窗口下载队列中查看")
-        print("推送完成")
+        print("推送完成，请至命令行查看！")
         output.toast("添加完成，请注意不要重复添加，否则会导致重复下载", color="error")
         # 选择要下载的年级
 
 
 if __name__ == '__main__':
-    pywebio.platform.start_server(main, port=3986, host='', debug=False, cdn="https://s-bj-2220-tuo-admin.oss.dogecdn.com/", check_origin=None, auto_open_webbrowser=False,)
+    pywebio.start_server(main, port=3985, host='', debug=False, cdn="https://s-bj-2220-tuo-admin.oss.dogecdn.com/")
     # start_server(main, debug=True, port=3985, cdn="https://s-bj-2220-tuo-admin.oss.dogecdn.com/")
