@@ -106,7 +106,7 @@ def main():
                 temp2 = 0
                 temp += 1
             grade_temp_list.append(str(i[1]) + '-' + str(temp2) + '-' + i[0])
-        down_dir_value = os.getcwd() + '\download'
+        down_dir_value = os.getcwd() + '\\download'
         work_dir = input.input("请输入要保存的目录[绝对路径]（只对本次任务有效）：", value=down_dir_value)
         output.toast(f"添加工作目录为{work_dir}(只对本次任务有效)", color="success")
         version_list = ["旧版: https://ykt.eduyun.cn/ykt/index.html", "新版: https://www.zxx.edu.cn/syncClassroom"]
@@ -140,5 +140,6 @@ def main():
 
 
 if __name__ == '__main__':
-    pywebio.start_server(main, port=3985, host='', debug=False, cdn="https://s-bj-2220-tuo-admin.oss.dogecdn.com/", auto_open_webbrowser=True)
+    pywebio.start_server(main, port=3985, host='', debug=False, cdn="https://s-bj-2220-tuo-admin.oss.dogecdn.com/",
+                         auto_open_webbrowser=True)
     # start_server(main, debug=True, port=3985, cdn="https://s-bj-2220-tuo-admin.oss.dogecdn.com/")

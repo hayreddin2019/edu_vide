@@ -12,9 +12,9 @@ def read_xue_duan_url():
 def chose_xue_duan_name(_xue_duan_json):
     print('请选择学段：')
     for i in _xue_duan_json["xueDuan"]:
-        for l in i["nianJiList"]:
-            print(l["njName"])
-            print(l["subjectsList"])
+        for k in i["nianJiList"]:
+            print(k["njName"])
+            print(k["subjectsList"])
 
 
 if __name__ == '__main__':
